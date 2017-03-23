@@ -21,7 +21,9 @@ read RAMBLE_SMTP_PW
 export RAMBLE_SMTP_USER=$RAMBLE_SMTP_USER
 export RAMBLE_SMTP_PW=$RAMBLE_SMTP_PW
 export RAMBLE_SMTP_TO=$RAMBLE_SMTP_TO
+export RAMBLE_SMTP_TO=$RAMBLE_ALT_SMTP_TO
 #Check for existance of env variable in /etc/environment and fix if necessary
 grep -q -F 'RAMBLE_SMTP_USER' /etc/environment || echo "RAMBLE_SMTP_USER=$RAMBLE_SMTP_USER" >> /etc/environment
 grep -q -F 'RAMBLE_SMTP_PW' /etc/environment || echo "RAMBLE_SMTP_PW=$RAMBLE_SMTP_PW" >> /etc/environment
 grep -q -F 'RAMBLE_SMTP_TO' /etc/environment || echo "RAMBLE_SMTP_TO=$RAMBLE_SMTP_TO" >> /etc/environment
+grep -q -F 'RAMBLE_ALT_SMTP_TO' /etc/environment || echo "RAMBLE_ALT_SMTP_TO=$RAMBLE_ALT_SMTP_TO" >> /etc/environment

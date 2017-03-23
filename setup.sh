@@ -10,6 +10,8 @@ fi
 #capture environment variables user input and set
 echo "Enter the default TO: address"
 read RAMBLE_SMTP_TO
+echo "Enter an alternate TO: email address"
+read RAMBLE_ALT_SMTP_TO
 echo "Enter the full SMTP username (ie. your_user@gmail.com) :"
 read RAMBLE_SMTP_USER
 echo "Enter the password :"

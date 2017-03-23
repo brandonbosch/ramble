@@ -1,6 +1,4 @@
 #!/bin/bash
-RAMBLE_SMTP_TO='default_recipient@mailserver.test'
-RAMBLE_ALT_SMTP_TO='service_desk_ticket_creator@mailserver.test'
 BODY='This is a test body'
 SUBJECT='Notication from Ramble: This is a test'
 MESSAGE_LEVEL='INFO'
@@ -20,10 +18,13 @@ do
     shift
 done
 
-if [ $MESSAGE_LEVEL -eq "HIGH" ]; then
+if [ $MESSAGE_LEVEL == "HIGH" ]
+then
   # priority high, do something different like send a pagerduty alert or an SMS
-else if [ $MESSAGE_LEVEL -eq "MAINT" ]; then
-  # regular maintenance event, could create a ticket or similar etc.
+  echo "This is a High Priority Test"
+elif [ $MESSAGE_LEVEL == "MAINT" ]
+then
+  # A regular maintenance event, could create a ticket or similar etc.
   swaks -t "$RAMBLE_ALT_SMTP_TO" -s smtp.gmail.com:587 -tls -a LOGIN --header "Subject: $SUBJECT" --body "$BODY" --auth-user "$RAMBLE_SMTP_USER" --auth-password "$RAMBLE_SMTP_PW" -S > /dev/null 2>&1
 else
   # just send a regular old email
